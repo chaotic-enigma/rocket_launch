@@ -24,11 +24,11 @@ pressure_rate = deque(maxlen=optimality)
 temperature_c = deque(maxlen=optimality)
 
 rocket_sensors = {'Acceleration' : rate_acceleration,
-						'Gyroscope' : gyroscopic_rate,
-						'Magnitude' : magnitude_rate,
-						'Velocity' : velocity_rate,
-						'Pressure' : pressure_rate,
-						'Temperature' : temperature_c}
+		  'Gyroscope' : gyroscopic_rate,
+		  'Magnitude' : magnitude_rate,
+		  'Velocity' : velocity_rate,
+		  'Pressure' : pressure_rate,
+		  'Temperature' : temperature_c}
 
 def rocket_data_updation(time_rate,rate_acceleration,gyroscopic_rate,magnitude_rate,velocity_rate,pressure_rate,temperature_c):
 
@@ -51,13 +51,13 @@ time_rate,rate_acceleration,gyroscopic_rate,magnitude_rate,velocity_rate,pressur
 
 app.layout = html.Div([
 		html.Div([
-				html.H3('Rocket Sensors Testing',style={'color' : colors['text'],'textAlign' : 'center'})
+			html.H3('Rocket Sensors Testing',style={'color' : colors['text'],'textAlign' : 'center'})
 			]),
 		dcc.Dropdown(id='sensors',
-						options=[{'label' : s,'value' : s} for s in rocket_sensors.keys()],
-						value=['Temperature'],
-						multi=False
-						),
+			     options=[{'label' : s,'value' : s} for s in rocket_sensors.keys()],
+			     value=['Temperature'],
+			     multi=False
+			 ),
 		html.Div(id='output-container'),
 		html.Div(children=html.Div(id='graphs'),className='row'),
 		dcc.Interval(id='sensor_updation',interval=1000)
@@ -88,11 +88,11 @@ def sensor_plotting(sensors):
 				id=str(each_sensor),
 				animate=True,
 				figure={'data' : [data],'layout' : go.Layout(xaxis=dict(range=[min(time_rate),max(time_rate)]),
-							yaxis=dict(range=[min(rocket_sensors[each_sensor]),max(rocket_sensors[each_sensor])]),
-							margin={'l' : 50,'r' : 1,'t' : 45,'b' : 1},
-							title='{}'.format(str(each_sensor)),
+					yaxis=dict(range=[min(rocket_sensors[each_sensor]),max(rocket_sensors[each_sensor])]),
+					margin={'l' : 50,'r' : 1,'t' : 45,'b' : 1},
+					title='{}'.format(str(each_sensor)),
 
-						)}
+				)}
 			)))
 
 		return graphs
