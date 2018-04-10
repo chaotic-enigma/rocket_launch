@@ -55,7 +55,7 @@ app.layout = html.Div([
 			]),
 		dcc.Dropdown(id='sensors',
 						options=[{'label' : s,'value' : s} for s in rocket_sensors.keys()],
-						value=['Pressure'],
+						value=['Temperature'],
 						multi=False
 						),
 		html.Div(id='output-container'),
